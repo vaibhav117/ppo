@@ -109,5 +109,5 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     
-    wandb.init(project=f"Deep-RL-HW3-trial4_{args.env}", name=f"alg_{args.alg}-seed_{args.seed}", group=f"{args.env}-{args.alg}")
+    wandb.init(project=f"Deep-RL-HW3-trial5_{args.env}", name=f"alg_{args.alg}-seed_{args.seed}", group=f"{args.env}-{args.alg}")
     main(args)

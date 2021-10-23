@@ -132,4 +132,4 @@ dmypy.json
 # custom
 wandb/
 logs/
-run-mpi4py-singularity.bash
+run-mpi4py-singularity*
