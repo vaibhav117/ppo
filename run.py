@@ -30,15 +30,15 @@ def train_ppo(args):
     if args.env == 'Pendulum-v0':
         hyperparameters = {'timesteps_per_batch': 2048, 'max_timesteps_per_episode': 200, 'gamma': 0.99, 'n_updates_per_iteration': 10,
                             'lr': 3e-4, 'clip': 0.2, 'save_freq': 1e6, 'seed': args.seed}
-        total_timesteps = 1005000
+        total_timesteps = 2005000
     elif args.env == 'BipedalWalker-v3':
         hyperparameters = {'timesteps_per_batch': 2048, 'max_timesteps_per_episode': 1600, 'gamma': 0.99, 'n_updates_per_iteration': 10,
                             'lr': 2.5e-4, 'clip': 0.2, 'save_freq': 1e6, 'seed': args.seed}
-        total_timesteps = 1405000
+        total_timesteps = 2405000
     elif args.env == 'LunarLanderContinuous-v2':
         hyperparameters = {'timesteps_per_batch': 1024, 'max_timesteps_per_episode': 1000, 'gamma': 0.999, 'n_updates_per_iteration': 4,
                             'lr': 2.5e-4, 'clip': 0.2, 'save_freq': 1e6, 'seed': args.seed}
-        total_timesteps = 1005000
+        total_timesteps = 2005000
     else:
         raise ValueError("Unrecognized environment, please specify the hyperparameters first.")
 
