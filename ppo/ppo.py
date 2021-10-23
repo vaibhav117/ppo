@@ -37,7 +37,7 @@ class PPO(BasePolicyGradient):
         # TODO: Initialize critic network
         self.critic = policy_class(self.obs_dim, 1)
         # Initialize optimizers critic
-        self.critic_optim = Adam(self.critic.parameters(), lr=self.lr)
+        self.critic_optim = self.actor_optim
 
     def learn(self, total_timesteps):
         """
