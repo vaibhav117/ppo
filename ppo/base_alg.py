@@ -4,6 +4,7 @@
 
 import gym
 import time
+import wandb
 
 import numpy as np
 
@@ -283,6 +284,10 @@ class BasePolicyGradient:
         avg_actor_loss = np.mean([losses.float().mean() for losses in self.logger['actor_losses']])
 
         # Round decimal places for more aesthetic logging messages
+        wandb.log({"average_episodic_return": avg_ep_rews})
+        wandb.log({"average_loss": avg_actor_loss})
+        wandb.log({"timesteps": t_so_far})
+        
         avg_ep_lens = str(round(avg_ep_lens, 2))
         avg_ep_rews = str(round(avg_ep_rews, 2))
         avg_actor_loss = str(round(avg_actor_loss, 5))

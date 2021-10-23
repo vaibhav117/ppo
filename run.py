@@ -6,6 +6,7 @@
 import gym
 import os
 import argparse
+import wandb
 
 # Import ppo files
 from ppo.ppo import PPO
@@ -29,7 +30,7 @@ def train_ppo(args):
     if args.env == 'Pendulum-v0':
         hyperparameters = {'timesteps_per_batch': 2048, 'max_timesteps_per_episode': 200, 'gamma': 0.99, 'n_updates_per_iteration': 10,
                             'lr': 3e-4, 'clip': 0.2, 'save_freq': 1e6, 'seed': args.seed}
-        total_timesteps = 10050000
+        total_timesteps = 1005000
     elif args.env == 'BipedalWalker-v3':
         hyperparameters = {'timesteps_per_batch': 2048, 'max_timesteps_per_episode': 1600, 'gamma': 0.99, 'n_updates_per_iteration': 10,
                             'lr': 2.5e-4, 'clip': 0.2, 'save_freq': 1e6, 'seed': args.seed}
@@ -63,7 +64,7 @@ def train_reinforce(args):
     if args.env == 'Pendulum-v0':
         hyperparameters = {'timesteps_per_batch': 2048, 'max_timesteps_per_episode': 200, 'gamma': 0.99, 'n_updates_per_iteration': 1,
                             'lr': 3e-4, 'clip': 0.2, 'save_freq': 1e6, 'seed': args.seed}
-        total_timesteps = 10050000
+        total_timesteps = 1005000
     elif args.env == 'BipedalWalker-v3':
         hyperparameters = {'timesteps_per_batch': 2048, 'max_timesteps_per_episode': 1600, 'gamma': 0.99, 'n_updates_per_iteration': 1,
                             'lr': 2.5e-4, 'clip': 0.2, 'save_freq': 1e6, 'seed': args.seed}
@@ -107,5 +108,6 @@ if __name__ == '__main__':
     parser.add_argument('--env', dest='env', type=str, default='')                 # Formal name of environment
 
     args = parser.parse_args()
-
+    
+    wandb.init(project=f"Deep-RL-HW3-trial2_{args.env}", name=f"alg_{args.alg}-seed_{args.seed}")
     main(args)
