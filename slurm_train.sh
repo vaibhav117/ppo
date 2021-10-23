@@ -8,10 +8,10 @@
 #SBATCH --mail-type=END
 #SBATCH --gres=gpu
 #SBATCH --array=1
-#SBATCH --job-name=PPO_Pendulum-v0_1
+#SBATCH --job-name=Rein_Pendulum-v0_1
 #SBATCH --output=./logs/%j_%x.out
 #SBATCH --error=./logs/%j_%x.err
 #SBATCH --export=ALL
 
 bash ./run-mpi4py-singularity.bash \
-	python run.py --alg PPO -- seed 1 --env Pendulum-v0 
+	python run.py --alg reinforce -- seed 1 --env Pendulum-v0 
