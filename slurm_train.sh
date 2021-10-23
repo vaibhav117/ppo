@@ -8,7 +8,7 @@
 #SBATCH --mail-type=END
 #SBATCH --gres=gpu
 #SBATCH --array=1
-#SBATCH --job-name=drq_breakout_all
+#SBATCH --job-name=PPO_Pendulum-v0_1
 #SBATCH --output=./logs/%j_%x.out
 #SBATCH --error=./logs/%j_%x.err
 #SBATCH --export=ALL
