@@ -253,6 +253,7 @@ class BasePolicyGradient:
         self.save_freq = 10                             # How often we save in number of iterations
         self.deterministic = False                      # If we're testing, don't sample actions
         self.seed = None								# Sets the seed of our program, used for reproducibility of results
+        self.best_avg_ep_revs = -1000                   # Best avg episodic reward
 
         # Change any default values to custom values for specified hyperparameters
         for param, val in hyperparameters.items():
@@ -284,9 +285,13 @@ class BasePolicyGradient:
         avg_actor_loss = np.mean([losses.float().mean() for losses in self.logger['actor_losses']])
 
         # Round decimal places for more aesthetic logging messages
+        if avg_ep_rews > self.best_avg_ep_revs:
+            self.best_avg_ep_revs = avg_ep_rews
+
         wandb.log({"average_episodic_return": avg_ep_rews})
         wandb.log({"average_loss": avg_actor_loss})
         wandb.log({"timesteps": t_so_far})
+        wandb.log({"best_avg_ep_revs": self.best_avg_ep_revs})
         
         avg_ep_lens = str(round(avg_ep_lens, 2))
         avg_ep_rews = str(round(avg_ep_rews, 2))

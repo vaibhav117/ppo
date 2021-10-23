@@ -38,7 +38,7 @@ def train_ppo(args):
     elif args.env == 'LunarLanderContinuous-v2':
         hyperparameters = {'timesteps_per_batch': 1024, 'max_timesteps_per_episode': 1000, 'gamma': 0.999, 'n_updates_per_iteration': 4,
                             'lr': 2.5e-4, 'clip': 0.2, 'save_freq': 1e6, 'seed': args.seed}
-        total_timesteps = 2005000
+        total_timesteps = 6005000
     else:
         raise ValueError("Unrecognized environment, please specify the hyperparameters first.")
 
