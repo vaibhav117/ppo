@@ -14,4 +14,4 @@
 #SBATCH --export=ALL
 
 bash ./run-mpi4py-singularity.bash \
-	python run.py --alg PPO -- seed 1 --env Pendulum-v0 
+	python run.py --alg PPO --seed 1 --env Pendulum-v0 
